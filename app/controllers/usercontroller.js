@@ -65,11 +65,11 @@ const login=async(req,res)=>{
             res.send('password is worng');
         }
         catch{
-            res.status(500).send();
+            res.status(401).send();
         }
     }
     catch{
-        res.send(401).send();
+        res.send(404).send();
     }
 }
 
