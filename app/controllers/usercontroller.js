@@ -62,7 +62,7 @@ const login=async(req,res)=>{
             });
             }
             else
-            res.send('password is worng');
+            res.send('password is wrong');
         }
         catch{
             res.status(401).send();
