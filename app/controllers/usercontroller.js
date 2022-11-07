@@ -14,6 +14,7 @@ const signUp=async(req,res)=>{
         email_id:req.body.email_id,
         mobile_number:req.body.mobile_number,
         password:hashedpassword,
+        dob:req.body.dob,
     }
     try{
     const user=await User.create(info);
@@ -25,10 +26,10 @@ const signUp=async(req,res)=>{
 }
 
 //Getting an user details
-const getOneuser=async(req,res)=>{
-    let id=req.params.id;
+const getProfile=async(req,res)=>{
+    let id=req.userId;
     try{
-    const user=await User.findOne({where :{id:id}});
+    const user=await User.findOne({where :{id:id},attributes:['name','email_id','mobile_number','dob']});
     // console.log(user.name)
     res.status(200).send(user);
     }
@@ -75,5 +76,5 @@ const login=async(req,res)=>{
 
 
 module.exports={
-    signUp,getOneuser,login
+    signUp,getProfile,login
 }

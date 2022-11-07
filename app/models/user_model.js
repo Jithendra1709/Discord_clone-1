@@ -9,7 +9,7 @@ module.exports=(sequelize,DataTypes)=>{
             unique:true,
         },
         mobile_number:{
-            type:DataTypes.INTEGER,
+            type:DataTypes.BIGINT,
             unique:true,
         },
         dob:{
