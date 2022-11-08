@@ -4,8 +4,11 @@ const express = require('express');
 const socketio = require('socket.io');
 const formatMessage = require('./utils/message');
 const {userJoin,getCurrentUser,userLeave,getRoomUsers} = require('./utils/users');
-const {authenticateToken}=require('.././controllers/authnitication');
 
+
+const {authenticateToken}=require('.././controllers/authnitication');
+const db=require('./../models');
+const User=db.users;
 
 const app = express();
 const server = http.createServer(app);
@@ -13,13 +16,16 @@ const io = socketio(server);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-
 const Name = 'Discord';
+
+
+const details=await User.findOne({where:{id:req.userId}});
+const serverdetails=await db.servermember
 
 
 io.on('connection', socket => {
   socket.on('joinRoom', ({ username, room }) => {
-    const user = userJoin(req.userId, username, room);
+    const user = userJoin(req.userId, details.name, room);
 
     socket.join(user.room);
 

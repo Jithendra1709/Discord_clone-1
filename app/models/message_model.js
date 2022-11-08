@@ -4,10 +4,14 @@ module.exports=(sequelize,DataTypes)=>{
             type:DataTypes.STRING
         },
         sender:{
-            type:DataTypes.STRING
+            type:DataTypes.INTEGER,
+            allowNull: false,
         },
-        time:{
-            type:DataTypes.TIME
+        channelId:{
+            type:DataTypes.INTEGER
+        },
+        serverId:{
+            type:DataTypes.INTEGER,
         },
         pinned:{
             type:DataTypes.BOOLEAN
@@ -15,6 +19,12 @@ module.exports=(sequelize,DataTypes)=>{
         thread_id:{
             type:DataTypes.INTEGER
         },
+        
+        timestamps: true,
+        updatedAt:false,
+        createdAt:'Time',
+        
+
     });
     return Message;
 }
