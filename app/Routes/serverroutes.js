@@ -6,5 +6,6 @@ serverrouter.post('/createserver',authenticateToken,servercontroller.createserve
 serverrouter.get('/server/getnonprivatechannels/:id',authenticateToken,servercontroller.getnonprivatechannels);
 serverrouter.get('/getallservers',authenticateToken,servercontroller.getallservers);
 serverrouter.post('/joinserver/:id',authenticateToken,servercontroller.joinserver);
+serverrouter.delete('/leave',authenticateToken,servercontroller.leave);
 
 module.exports=serverrouter;

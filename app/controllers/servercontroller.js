@@ -1,3 +1,4 @@
+const { channelmember } = require('../models');
 const db=require('../models');
 const User=db.users;
 const Server=db.servers;
@@ -75,6 +76,8 @@ res.status(200).send(details);
     catch(err){res.send(err.message);}
 }
 
+
+//Join a server
 const joinserver=async(req,res)=>{
   try{
     const join=await Servermember.create({userId:req.userId,serverId:req.params.id});
@@ -84,11 +87,23 @@ const joinserver=async(req,res)=>{
   catch(err){res.send(err.message)}
 }
 
+//leave the server
+const leave=async(req,res)=>{
+    try{
+    const serverdata=await Servermember.destroy({where:{userId:req.userId,serverId:req.body.serverId}});
+    const channeldata=await Serverchanneluser.destroy({where:{userId:req.userId,serverId:req.body.serverId}})
+    
+    res.send("Deleted succesfully");
+    }
+    catch(err){res.send(err.message)}
+
+}
+
 
 
 
 
 
 module.exports={
-    createserver,getallservers,getnonprivatechannels,joinserver,
+    createserver,getallservers,getnonprivatechannels,joinserver,leave
 }

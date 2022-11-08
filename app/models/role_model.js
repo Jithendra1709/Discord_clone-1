@@ -3,11 +3,12 @@ module.exports=(sequelize,DataTypes)=>{
         role_name:{
             type:DataTypes.STRING,
             defaultValue: 'Default',
+            
 
         },
         view_channels:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         manage_channels:{
             type:DataTypes.BOOLEAN,
@@ -36,11 +37,11 @@ module.exports=(sequelize,DataTypes)=>{
         },
         create_invite:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         change_nickname:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         manage_nickname:{
             type:DataTypes.BOOLEAN,
@@ -60,27 +61,27 @@ module.exports=(sequelize,DataTypes)=>{
         },
         send_messages:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         send_messages_in_thread:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         create_public_thread:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         embed_links:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         attach_files:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         add_reactions:{
             type:DataTypes.BOOLEAN,
-            defaultValue: false,
+            defaultValue: true,
         },
         manage_messages:{
             type:DataTypes.BOOLEAN,
@@ -95,6 +96,9 @@ module.exports=(sequelize,DataTypes)=>{
             defaultValue: false,
         },
        
+    },
+    {
+        timestamps: false,
     });
     return Permission;
 }

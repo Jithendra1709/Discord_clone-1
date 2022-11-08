@@ -6,6 +6,8 @@ module.exports=(sequelize,DataTypes)=>{
         // member_id:{
         //     type:DataTypes.INTEGER
         // },
+    },{
+        timestamps: false,
     });
     return Servermember;
 };

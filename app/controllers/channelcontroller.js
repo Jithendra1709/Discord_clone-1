@@ -13,7 +13,7 @@ const Serverchanneluser=db.serverchanneluser;
 const createChannel=async(req,res)=>{
     // const member=await Servermember.findOne({where:{userId:req.userId}})
     const creator=await db.servers.findOne({where:{created_by:req.userId}});
-    const role=await Serverchanneluser.findOne({where:{userId:req.userId,serverId:req.body.serverId,role:req.body.role}})
+    // const role=await Serverchanneluser.findOne({where:{userId:req.userId,serverId:req.body.serverId,role:req.body.role}})
     let info={
         name:req.body.name,
         // channel_id:req.body.channel_id,

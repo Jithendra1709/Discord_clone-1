@@ -2,6 +2,7 @@
 
 module.exports=(sequelize,DataTypes)=>{
     const Channelmember=sequelize.define('channelmember',{
+       
         // channel_id:{
         //     type:DataTypes.INTEGER,
         //     // allowNull:true,
@@ -18,6 +19,9 @@ module.exports=(sequelize,DataTypes)=>{
         //     //     key:'id',
         //     // }
         // },
+    },
+    {
+        timestamps: false,
     });
 
     // Channelmember.associate=models=>{

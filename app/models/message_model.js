@@ -18,13 +18,10 @@ module.exports=(sequelize,DataTypes)=>{
         },
         thread_id:{
             type:DataTypes.INTEGER
-        },
-        
-        timestamps: true,
+        },  
+    } ,
+    { timestamps: true,
         updatedAt:false,
-        createdAt:'Time',
-        
-
-    });
+        createdAt:'Time',});
     return Message;
 }

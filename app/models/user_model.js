@@ -9,7 +9,7 @@ module.exports=(sequelize,DataTypes)=>{
             unique:true,
         },
         mobile_number:{
-            type:DataTypes.BIGINT,
+            type:DataTypes.DECIMAL(10,0),
             unique:true,
         },
         dob:{
@@ -18,6 +18,11 @@ module.exports=(sequelize,DataTypes)=>{
         password:{
             type:DataTypes.STRING,
         }
+    },
+    {
+        timestamps: true,
+        updatedAt:false,
+        createdAt:'Joined On' 
     });
 
  
