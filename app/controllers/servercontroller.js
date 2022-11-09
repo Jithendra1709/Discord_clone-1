@@ -1,4 +1,8 @@
 const { channelmember } = require('../models');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const multer = require("multer");
+
 const db=require('../models');
 const User=db.users;
 const Server=db.servers;
@@ -6,26 +10,24 @@ const Servermember=db.servermember;
 const Channel=db.channels;
 const Serverchanneluser=db.serverchanneluser;
 
+
 const createserver=async(req,res)=>{
-    let info={
-        name:req.body.name,
-        created_by:req.userId,
-    }
-    try{
-    const server=await Server.create(info);
+try{
+const result = await cloudinary.uploader.upload(req.file.path)
+console.log(result);
+    const server=await Server.create( {name:req.body.servername,
+        image:result.secure_url,
+        created_by:req.userId,});
     const addserver=await Servermember.create({
         userId:req.userId,
         serverId:server.id,
     })
-    // console.log('server is added');
     res.status(200).send(server);
+}
+    catch(err){ res.send(err.message)}
     }
 
-    catch(err){ res.send(err.message)}
     
-}
-
-
 
 const getallservers=async(req,res)=>{
     try{

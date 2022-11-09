@@ -3,6 +3,12 @@ const cors= require('cors');
 const app=express();
 
 
+const http=require('http');
+const socketio=require('socket.io');
+let server=http.createServer(app);
+let io=socketio(server);
+
+
 var corsOptions={
     // origin:'http://192.168.1.140:3000/login'
     origin:'*'
@@ -13,6 +19,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.urlencoded({extended:true}));
+
+
 
 app.get('/welcome',(req,res)=>{
     res.json({message:'welcome to discord application'});
@@ -44,7 +52,7 @@ app.use('/notification',notificationrouter);
 
 const PORT=process.env.PORT||7070;
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     console.log(`server running on ${PORT}`);
 });
 
